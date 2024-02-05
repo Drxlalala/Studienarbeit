@@ -206,12 +206,12 @@ if Train:
       
          model = DDPG( policy='MultiInputPolicy', env=make_vec_env(env_id, n_envs=8),learning_rate=1e-3, buffer_size=10_0000, learning_starts=100, batch_size=256, tau=5e-3, gamma=0.9, train_freq=(1, 'step'), verbose=1, tensorboard_log=log_dir)
          model.learn(50000, callback=eval_callback)
-         model.save('underwater_save/DDPG.FetchPickAndPlace_Underwater_hybrid')
+         model.save('underwater_save/DDPG.hybrid')
          model.save_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_hybrid')
 
          model = SAC( policy='MultiInputPolicy', env=make_vec_env(env_id, n_envs=8) , learning_rate=1e-3, buffer_size=10_0000, learning_starts=100, batch_size=256, tau=5e-3, gamma=0.9, train_freq=(1, 'step'), verbose=1, tensorboard_log=log_dir)
          model.learn(50000, callback=eval_callback)
-         model.save('underwater_save/SAC.FetchPickAndPlace_Underwater_hybrid')
+         model.save('underwater_save/SAC.hybrid')
          model.save_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_hybrid')
 
          already_trained = True
