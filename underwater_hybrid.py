@@ -101,7 +101,7 @@ def make_env(env_name):
 class Train_Type:
 
    def sac_train():
-      loaded_model = SAC.load('underwater_save/SAC.FetchPickAndPlace_Underwater_hybrid')
+      loaded_model = SAC.load('underwater_save/SAC.hybrid')
 
       loaded_model.load_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_hybrid')
 
@@ -116,7 +116,7 @@ class Train_Type:
       loaded_model.learn(50000, callback=eval_callback)
 
 
-      loaded_model.save('underwater_save/SAC.FetchPickAndPlace_Underwater_hybrid')
+      loaded_model.save('underwater_save/SAC.hybrid')
 
       loaded_model.save_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_hybrid')
 
@@ -141,7 +141,7 @@ class Train_Type:
 
    def ddpg_train():
 
-      loaded_model = DDPG.load('underwater_save/DDPG.FetchPickAndPlace_Underwater_hybrid')
+      loaded_model = DDPG.load('underwater_save/DDPG.hybrid')
 
       loaded_model.load_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_hybrid')
 
@@ -152,7 +152,7 @@ class Train_Type:
       loaded_model.learn(50000, callback=eval_callback)
 
 
-      loaded_model.save('underwater_save/DDPG.FetchPickAndPlace_Underwater_hybrid')
+      loaded_model.save('underwater_save/DDPG.hybrid')
 
       loaded_model.save_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_hybrid')
 
