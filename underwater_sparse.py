@@ -132,7 +132,7 @@ def iteration(model):
 class Train_Type:
 
    def sac_train():
-      loaded_model = SAC.load('underwater_save/SAC.FetchPickAndPlace_Underwater_sparse')
+      loaded_model = SAC.load('underwater_save/SAC.sparse')
 
       loaded_model.load_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_sparse')
 
@@ -147,7 +147,7 @@ class Train_Type:
       loaded_model.learn(50000, callback=eval_callback)
 
 
-      loaded_model.save('underwater_save/SAC.FetchPickAndPlace_Underwater_sparse')
+      loaded_model.save('underwater_save/SAC.sparse')
 
       loaded_model.save_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_sparse')
 
@@ -172,7 +172,7 @@ class Train_Type:
 
    def ddpg_train():
 
-      loaded_model = DDPG.load('underwater_save/DDPG.FetchPickAndPlace_Underwater_sparse')
+      loaded_model = DDPG.load('underwater_save/DDPG.sparse')
 
       loaded_model.load_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_sparse')
 
@@ -183,7 +183,7 @@ class Train_Type:
       loaded_model.learn(50000, callback=eval_callback)
 
 
-      loaded_model.save('underwater_save/DDPG.FetchPickAndPlace_Underwater_sparse')
+      loaded_model.save('underwater_save/DDPG.sparse')
 
       loaded_model.save_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_sparse')
 
@@ -237,12 +237,12 @@ if Train:
       
          model = DDPG( policy='MultiInputPolicy', env=make_vec_env(env_id, n_envs=8),learning_rate=1e-3, buffer_size=10_0000, learning_starts=100, batch_size=256, tau=5e-3, gamma=0.9, train_freq=(1, 'step'), verbose=1, tensorboard_log=log_dir)
          model.learn(50000, callback=eval_callback)
-         model.save('underwater_save/DDPG.FetchPickAndPlace_Underwater_sparse')
+         model.save('underwater_save/DDPG.sparse')
          model.save_replay_buffer('underwater_save/DDPG.ReplayBuffer_Underwater_sparse')
 
          model = SAC( policy='MultiInputPolicy', env=make_vec_env(env_id, n_envs=8) , learning_rate=1e-3, buffer_size=10_0000, learning_starts=100, batch_size=256, tau=5e-3, gamma=0.9, train_freq=(1, 'step'), verbose=1, tensorboard_log=log_dir)
          model.learn(50000, callback=eval_callback)
-         model.save('underwater_save/SAC.FetchPickAndPlace_Underwater_sparse')
+         model.save('underwater_save/SAC.sparse')
          model.save_replay_buffer('underwater_save/SAC.ReplayBuffer_Underwater_sparse')
 
          already_trained = True
